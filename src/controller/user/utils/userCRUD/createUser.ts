@@ -15,10 +15,10 @@ export const createUser = async ({ traceId, username, firstName, lastName, email
     log.info(`[${traceId}] [createUser] [START]`);
     try {
 
-        let user = await db.user.findOne({ username });
+        let user = await db.user.findOne({ username }).lean();
         
         if (!user) {
-            user = await db.user.findOne({ email });
+            user = await db.user.findOne({ email }).lean();
         }
 
         if (user) {

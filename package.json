@@ -4,7 +4,11 @@
 	"version": "1.0.0",
 	"main": "src/index.ts",
 	"scripts": {
-		"dev": "ts-node-dev src/index.ts"
+		"genCertsDev": "rm -rf src/certs && mkdir src/certs && openssl genrsa -out src/certs/access_private.pem 1024 && openssl rsa -in src/certs/access_private.pem -pubout -out src/certs/access_public.pem && openssl genrsa -out src/certs/refresh_private.pem 1024 && openssl rsa -in src/certs/refresh_private.pem -pubout -out src/certs/refresh_public.pem",
+		"dev": "ts-node-dev src/index.ts",
+		"genCerts": "rm -rf build/certs && mkdir build && mkdir build/certs && openssl genrsa -out build/certs/access_private.pem 1024 && openssl rsa -in build/certs/access_private.pem -pubout -out build/certs/access_public.pem && openssl genrsa -out build/certs/refresh_private.pem 1024 && openssl rsa -in build/certs/refresh_private.pem -pubout -out build/certs/refresh_public.pem",
+		"build": "rimraf build && npm run genCerts && tsc",
+		"start": "node build/index.js"
 	},
 	"repository": {
 		"type": "git",
@@ -19,6 +23,7 @@
 	"devDependencies": {
 		"@types/crypto-js": "^4.1.1",
 		"@types/express": "^4.17.13",
+		"@types/jsonwebtoken": "^8.5.8",
 		"@types/uuid": "^8.3.4",
 		"@types/zxcvbn": "^4.4.1",
 		"ts-node-dev": "^1.1.8",
@@ -28,6 +33,7 @@
 		"crypto-js": "^4.1.1",
 		"dotenv": "^16.0.0",
 		"express": "^4.17.3",
+		"jsonwebtoken": "^8.5.1",
 		"mongoose": "^6.3.0",
 		"uuid": "^8.3.2",
 		"zxcvbn": "^4.4.2"

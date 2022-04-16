@@ -1,4 +1,3 @@
-import { application } from 'express';
 import { Schema, model } from 'mongoose';
 import { User } from '../user/user';
 import { Application } from './application';

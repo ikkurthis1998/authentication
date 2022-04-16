@@ -50,7 +50,7 @@ export const updateBusiness = async ({
 			}
         );
         
-        const business = await db.business.findOne({ _id });
+        const business = await db.business.findOne({ _id }).lean();
 
 		log.info(`[${traceId}] [updateBusiness] [END]`);
 		return {

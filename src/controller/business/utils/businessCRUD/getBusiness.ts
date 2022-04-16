@@ -6,7 +6,7 @@ export const getBusiness = async ({ traceId, _id }: { traceId: string, _id: Sche
     log.info(`[${traceId}] [getBusiness] [START]`);
     try {
 
-        const business = await db.business.findOne({ _id });
+        const business = await db.business.findOne({ _id }).lean();
 
         log.info(`[${traceId}] [getBusiness] [END]`);
         return {
