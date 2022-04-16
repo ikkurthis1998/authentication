@@ -71,7 +71,7 @@ const UserSchema = new Schema(
 		},
 		phone: {
 			type: String,
-			required: true,
+			// required: true,
 			trim: true,
 			unique: true,
 			match: [
@@ -126,6 +126,7 @@ const UserSchema = new Schema(
 		status: {
 			type: String,
 			required: true,
+			default: userStatus.active,
 			enum: [userStatus.active, userStatus.inactive, userStatus.deleted]
 		}
 	},
