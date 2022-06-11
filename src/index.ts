@@ -19,7 +19,7 @@ mongoose
 		});
 	})
 	.catch((error) => {
-		log.error(`[dbConnection] [ERROR] ${error.message}`);
+		log.error(`[DB] [ERROR] ${error.message}`);
 	});
 
 app.use(express.json());
